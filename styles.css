@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    background-color: #fff8dc
+}
+
+.controls {
+    text-align: center;
+    margin-top: 50px;
+    height: 50px;
+}
+
+.button {
+    background-color: #48c124; 
+    margin-right: 5px; 
+    border-radius: 5%; 
+    font-weight: bold; 
+    text-decoration: none;
+    padding: 20px 50px;
+    line-height: 10px;
+    text-transform: uppercase;
+    color: #ffffff;   
+}
+
+.button:hover {
+    background-color: #ffffff;
+    color:  #48c124; 
+}
+
+.stopwatch {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 56px;
+}
