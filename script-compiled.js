@@ -5,13 +5,14 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Stopwatch = function () {
-    function Stopwatch(display) {
+    function Stopwatch(display, results) {
         _classCallCheck(this, Stopwatch);
 
         this.running = false;
         this.display = display;
         this.reset();
         this.print(this.times);
+        this.results = results;
     }
 
     _createClass(Stopwatch, [{
@@ -83,6 +84,19 @@ var Stopwatch = function () {
             };
             stopwatch.print();
         }
+    }, {
+        key: 'lap',
+        value: function lap() {
+            var times = this.times;
+            var li = document.createElement('li');
+            li.innerText = this.format(times);
+            this.results.appendChild(li);
+        }
+    }, {
+        key: 'clear',
+        value: function clear() {
+            clearChildren(this.results);
+        }
     }]);
 
     return Stopwatch;
@@ -94,6 +108,12 @@ function pad0(value) {
         result = '0' + result;
     }
     return result;
+}
+
+function clearChildren(node) {
+    while (node.lastChild) {
+        node.removeChild(node.lastChild);
+    }
 }
 
 var startButton = document.getElementById('start');
@@ -111,4 +131,14 @@ resetButton.addEventListener('click', function () {
     return stopwatch.resetTimer();
 });
 
-var stopwatch = new Stopwatch(document.querySelector('.stopwatch'));
+var lapButton = document.getElementById('lap');
+lapButton.addEventListener('click', function () {
+    return stopwatch.lap();
+});
+
+var clearButton = document.getElementById('clear');
+clearButton.addEventListener('click', function () {
+    return stopwatch.clear();
+});
+
+var stopwatch = new Stopwatch(document.querySelector('.stopwatch'), document.querySelector('.results'));
