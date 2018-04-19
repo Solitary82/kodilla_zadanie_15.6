@@ -66,8 +66,8 @@ class Stopwatch {
     
     
     lap() {
-        let times = this.times;
-        let li = document.createElement('li');
+        const times = this.times;
+        const li = document.createElement('li');
         li.innerText = this.format(times);
         this.results.appendChild(li); 
         }
@@ -78,9 +78,9 @@ class Stopwatch {
 }
 
 function pad0(value) {
-    let result = value.toString();
+    const result = value.toString();
     if (result.length < 2) {
-        result = '0' + result;
+        return '0' + result;
     }
     return result;
 }
@@ -91,21 +91,21 @@ function clearChildren(node) {
     }
 }
 
-let startButton = document.getElementById('start');
+const startButton = document.getElementById('start');
 startButton.addEventListener('click', () => stopwatch.start());
 
-let stopButton = document.getElementById('stop');
+const stopButton = document.getElementById('stop');
 stopButton.addEventListener('click', () => stopwatch.stop());
 
-let resetButton = document.getElementById('reset');
+const resetButton = document.getElementById('reset');
 resetButton.addEventListener('click', () => stopwatch.resetTimer());
 
-let lapButton = document.getElementById('lap');
+const lapButton = document.getElementById('lap');
 lapButton.addEventListener('click', () => stopwatch.lap());
 
-let clearButton = document.getElementById('clear');
+const clearButton = document.getElementById('clear');
 clearButton.addEventListener('click', () => stopwatch.clear());
 
-let stopwatch = new Stopwatch(
+const stopwatch = new Stopwatch(
     document.querySelector('.stopwatch'),
     document.querySelector('.results'));
